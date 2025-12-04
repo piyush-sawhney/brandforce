@@ -11,15 +11,21 @@ app_license = "mit"
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "brandforce",
-# 		"logo": "/assets/brandforce/logo.png",
-# 		"title": "Brandforce360",
-# 		"route": "/brandforce",
-# 		"has_permission": "brandforce.api.permission.has_app_permission"
-# 	}
-# ]
+app_home = "/app/home"
+add_to_apps_screen = [
+	{
+		"name": "Brandforce 360",
+		"logo": "/assets/brandforce/images/logo.png",
+		"title": "Brandforce 360",
+		"route": app_home,
+		"has_permission": "brandforce.check_app_permission",
+	}
+]
+
+website_context = {
+	"favicon": "/assets/brandforce/images/logo.png",
+	"splash_image": "/assets/brandforce/images/logo.png",
+}
 
 # Includes in <head>
 # ------------------
@@ -79,16 +85,19 @@ app_license = "mit"
 # 	"filters": "brandforce.utils.jinja_filters"
 # }
 
+# Migrations
+before_migrate = "brandforce.setup.migrate.before_migrate"
+after_migrate = "brandforce.setup.migrate.after_migrate"
 # Installation
 # ------------
 
 # before_install = "brandforce.install.before_install"
-# after_install = "brandforce.install.after_install"
+after_install = "brandforce.setup.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "brandforce.uninstall.before_uninstall"
+before_uninstall = "brandforce.setup.install.before_uninstall"
 # after_uninstall = "brandforce.uninstall.after_uninstall"
 
 # Integration Setup
